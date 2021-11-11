@@ -1,0 +1,282 @@
+<!--Pololu Maestro servo controller settings file, http://www.pololu.com/catalog/product/1350-->
+<UscSettings version="1">
+  <NeverSuspend>false</NeverSuspend>
+  <SerialMode>UART_FIXED_BAUD_RATE</SerialMode>
+  <FixedBaudRate>9600</FixedBaudRate>
+  <SerialTimeout>0</SerialTimeout>
+  <EnableCrc>false</EnableCrc>
+  <SerialDeviceNumber>12</SerialDeviceNumber>
+  <SerialMiniSscOffset>0</SerialMiniSscOffset>
+  <Channels MiniMaestroServoPeriod="80000" ServoMultiplier="1">
+    <!--Period = 20 ms-->
+    <!--Channel 0-->
+    <Channel name="Left Door" mode="Servo" min="1984" max="9472" homemode="Off" home="1984" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 1-->
+    <Channel name="Right Door" mode="Servo" min="2432" max="9984" homemode="Off" home="2432" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 2-->
+    <Channel name="Left Arm Ext" mode="Servo" min="3200" max="8832" homemode="Off" home="3200" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 3-->
+    <Channel name="Right Arm Ext" mode="Servo" min="3200" max="8512" homemode="Off" home="3200" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 4-->
+    <Channel name="Left Stretch" mode="Servo" min="3136" max="9152" homemode="Off" home="3136" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 5-->
+    <Channel name="Right Stretch" mode="Servo" min="3200" max="9024" homemode="Off" home="3200" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 6-->
+    <Channel name="Periscope Rise" mode="Servo" min="5952" max="9344" homemode="Off" home="5952" speed="0" acceleration="0" neutral="6016" range="1905" />
+    <!--Channel 7-->
+    <Channel name="Perscope Turn" mode="Servo" min="3200" max="8000" homemode="Off" home="3200" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 8-->
+    <Channel name="Periscope LED" mode="Output" min="3968" max="8000" homemode="Off" home="3968" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 9-->
+    <Channel name="" mode="Servo" min="3968" max="8000" homemode="Off" home="3968" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 10-->
+    <Channel name="" mode="Servo" min="3968" max="8000" homemode="Off" home="3968" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 11-->
+    <Channel name="" mode="Servo" min="3968" max="8000" homemode="Off" home="3968" speed="0" acceleration="0" neutral="6000" range="1905" />
+  </Channels>
+  <Sequences>
+    <Sequence name="Arm Flex Async">
+      <Frame name="Servos Off" duration="10">0 0 0 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Servos Off" duration="500">0 0 0 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Doors Open" duration="500">2202 9984 0 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Arms Out" duration="1000">0 0 3200 8512 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Ext R" duration="500">0 0 3200 8512 0 3200 0 0 0 0 0 0</Frame>
+      <Frame name="Cont R/Ext L" duration="500">0 0 3200 8512 9152 9024 0 0 0 0 0 0</Frame>
+      <Frame name="Ext R/Cont L" duration="500">0 0 3200 8512 3136 3200 0 0 0 0 0 0</Frame>
+      <Frame name="Cont R/Ext L" duration="500">0 0 3200 8512 9152 9024 0 0 0 0 0 0</Frame>
+      <Frame name="Cont L" duration="500">0 0 3200 8512 3136 9024 0 0 0 0 0 0</Frame>
+      <Frame name="Arms In" duration="500">0 0 8832 3200 3136 9024 0 0 0 0 0 0</Frame>
+      <Frame name="Close Doors" duration="500">9472 2432 0 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Servos Off" duration="10">0 0 0 0 0 0 0 0 0 0 0 0</Frame>
+    </Sequence>
+    <Sequence name="Arm Flex Sync">
+      <Frame name="Servos Off" duration="10">0 0 0 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Doors Open" duration="500">1984 9984 0 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Arms Out" duration="1000">0 0 3200 8512 3136 9024 0 0 0 0 0 0</Frame>
+      <Frame name="Arms Ext1" duration="500">0 0 3200 8512 9152 3200 0 0 0 0 0 0</Frame>
+      <Frame name="Arms Cont1" duration="500">0 0 3200 8512 3136 9024 0 0 0 0 0 0</Frame>
+      <Frame name="Arms Ext2" duration="500">0 0 3200 8512 9152 3200 0 0 0 0 0 0</Frame>
+      <Frame name="Arms Cont2" duration="500">0 0 3200 8512 3136 9024 0 0 0 0 0 0</Frame>
+      <Frame name="Arms In" duration="500">0 0 8832 3200 3136 9024 0 0 0 0 0 0</Frame>
+      <Frame name="Close Doors" duration="500">9472 2432 0 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Servos Off" duration="10">0 0 0 0 0 0 0 0 0 0 0 0</Frame>
+    </Sequence>
+    <Sequence name="Periscope Look Around">
+      <Frame name="Servos Off" duration="10">0 0 0 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="LED On" duration="10">0 0 0 0 0 0 0 0 6000 0 0 0</Frame>
+      <Frame name="Up" duration="500">0 0 0 0 0 0 9344 0 6000 0 0 0</Frame>
+      <Frame name="Turn R" duration="500">0 0 0 0 0 0 9344 3200 6000 0 0 0</Frame>
+      <Frame name="Turn F/0.5 Down" duration="700">0 0 0 0 0 0 8553 5087 6000 0 0 0</Frame>
+      <Frame name="Turn L/Up" duration="700">0 0 0 0 0 0 9344 6695 6000 0 0 0</Frame>
+      <Frame name="Turn R" duration="500">0 0 0 0 0 0 9344 3200 6000 0 0 0</Frame>
+      <Frame name="Turn L" duration="500">0 0 0 0 0 0 9344 6648 6000 0 0 0</Frame>
+      <Frame name="Turn F" duration="500">0 0 0 0 0 0 9344 4854 6000 0 0 0</Frame>
+      <Frame name="Down" duration="500">0 0 0 0 0 0 5952 4854 6000 0 0 0</Frame>
+      <Frame name="All Off" duration="10">0 0 0 0 0 0 0 0 0 0 0 0</Frame>
+    </Sequence>
+    <Sequence name="Periscope Peek">
+      <Frame name="All Off" duration="10">0 0 0 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="LED On" duration="10">0 0 0 0 0 0 0 0 6000 0 0 0</Frame>
+      <Frame name="Up" duration="500">0 0 0 0 0 0 7055 0 6000 0 0 0</Frame>
+      <Frame name="Turn R" duration="500">0 0 0 0 0 0 7055 3200 6000 0 0 0</Frame>
+      <Frame name="Turn L" duration="1000">0 0 0 0 0 0 7055 7091 6000 0 0 0</Frame>
+      <Frame name="Turn F" duration="500">0 0 0 0 0 0 7055 5506 6000 0 0 0</Frame>
+      <Frame name="Down" duration="500">0 0 0 0 0 0 5952 5506 6000 0 0 0</Frame>
+      <Frame name="All Off" duration="10">0 0 0 0 0 0 0 0 0 0 0 0</Frame>
+    </Sequence>
+    <Sequence name="Right Arm Flex">
+      <Frame name="Servos Off" duration="10">0 0 0 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Open R Door" duration="500">0 9947 0 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="R Arm Out" duration="1000">0 0 0 8512 0 9024 0 0 0 0 0 0</Frame>
+      <Frame name="R Arm Ext" duration="500">0 0 0 8512 0 3200 0 0 0 0 0 0</Frame>
+      <Frame name="R Arm Cont" duration="500">0 0 0 8512 0 9024 0 0 0 0 0 0</Frame>
+      <Frame name="R Arm Ext" duration="500">0 0 0 8512 0 3200 0 0 0 0 0 0</Frame>
+      <Frame name="R Arm Cont" duration="500">0 0 0 8512 0 9024 0 0 0 0 0 0</Frame>
+      <Frame name="Arms In" duration="500">0 0 0 3200 0 9024 0 0 0 0 0 0</Frame>
+      <Frame name="Close R Door" duration="500">0 2432 0 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Servos Off" duration="10">0 0 0 0 0 0 0 0 0 0 0 0</Frame>
+    </Sequence>
+  </Sequences>
+  <Script ScriptDone="true">
+### Sequence subroutines: ###
+
+# Arm Flex Async
+sub Arm_Flex_Async
+  10 0 0 0 0 0 0 
+  0 0 0 0 0 0 frame_0..11 # Servos Off
+  500 delay # Servos Off
+  500 2202 9984 frame_0_1 # Doors Open
+  1000 0 0 3200 8512 frame_0..3 # Arms Out
+  500 3200 frame_5 # Ext R
+  500 9152 9024 frame_4_5 # Cont R/Ext L
+  500 3136 3200 frame_4_5 # Ext R/Cont L
+  500 9152 9024 frame_4_5 # Cont R/Ext L
+  500 3136 frame_4 # Cont L
+  500 8832 3200 frame_2_3 # Arms In
+  500 9472 2432 0 0 0 0 frame_0..5 # Close Doors
+  10 0 0 frame_0_1 # Servos Off
+  return
+# Arm Flex Sync
+sub Arm_Flex_Sync
+  10 0 0 0 0 0 0 
+  0 0 0 0 0 0 frame_0..11 # Servos Off
+  500 1984 9984 frame_0_1 # Doors Open
+  1000 0 0 3200 8512 3136 9024 frame_0..5 # Arms Out
+  500 9152 3200 frame_4_5 # Arms Ext1
+  500 3136 9024 frame_4_5 # Arms Cont1
+  500 9152 3200 frame_4_5 # Arms Ext2
+  500 3136 9024 frame_4_5 # Arms Cont2
+  500 8832 3200 frame_2_3 # Arms In
+  500 9472 2432 0 0 0 0 frame_0..5 # Close Doors
+  10 0 0 frame_0_1 # Servos Off
+  return
+# Periscope Look Around
+sub Periscope_Look_Around
+  10 0 0 0 0 0 0 
+  0 0 0 0 0 0 frame_0..11 # Servos Off
+  10 6000 frame_8 # LED On
+  500 9344 frame_6 # Up
+  500 3200 frame_7 # Turn R
+  700 8553 5087 frame_6_7 # Turn F/0.5 Down
+  700 9344 6695 frame_6_7 # Turn L/Up
+  500 3200 frame_7 # Turn R
+  500 6648 frame_7 # Turn L
+  500 4854 frame_7 # Turn F
+  500 5952 frame_6 # Down
+  10 0 0 0 frame_6..8 # All Off
+  return
+# Periscope Peek
+sub Periscope_Peek
+  10 0 0 0 0 0 0 
+  0 0 0 0 0 0 frame_0..11 # All Off
+  10 6000 frame_8 # LED On
+  500 7055 frame_6 # Up
+  500 3200 frame_7 # Turn R
+  1000 7091 frame_7 # Turn L
+  500 5506 frame_7 # Turn F
+  500 5952 frame_6 # Down
+  10 0 0 0 frame_6..8 # All Off
+  return
+# Right Arm Flex
+sub Right_Arm_Flex
+  10 0 0 0 0 0 0 
+  0 0 0 0 0 0 frame_0..11 # Servos Off
+  500 9947 frame_1 # Open R Door
+  1000 0 8512 9024 frame_1_3_5 # R Arm Out
+  500 3200 frame_5 # R Arm Ext
+  500 9024 frame_5 # R Arm Cont
+  500 3200 frame_5 # R Arm Ext
+  500 9024 frame_5 # R Arm Cont
+  500 3200 frame_3 # Arms In
+  500 2432 0 0 frame_1_3_5 # Close R Door
+  10 0 frame_1 # Servos Off
+  return
+
+sub frame_0..11
+  11 servo
+  10 servo
+  9 servo
+  8 servo
+  7 servo
+  6 servo
+  5 servo
+  4 servo
+  3 servo
+  2 servo
+  1 servo
+  0 servo
+  delay
+  return
+
+sub frame_0_1
+  1 servo
+  0 servo
+  delay
+  return
+
+sub frame_0..3
+  3 servo
+  2 servo
+  1 servo
+  0 servo
+  delay
+  return
+
+sub frame_5
+  5 servo
+  delay
+  return
+
+sub frame_4_5
+  5 servo
+  4 servo
+  delay
+  return
+
+sub frame_4
+  4 servo
+  delay
+  return
+
+sub frame_2_3
+  3 servo
+  2 servo
+  delay
+  return
+
+sub frame_0..5
+  5 servo
+  4 servo
+  3 servo
+  2 servo
+  1 servo
+  0 servo
+  delay
+  return
+
+sub frame_8
+  8 servo
+  delay
+  return
+
+sub frame_6
+  6 servo
+  delay
+  return
+
+sub frame_7
+  7 servo
+  delay
+  return
+
+sub frame_6_7
+  7 servo
+  6 servo
+  delay
+  return
+
+sub frame_6..8
+  8 servo
+  7 servo
+  6 servo
+  delay
+  return
+
+sub frame_1
+  1 servo
+  delay
+  return
+
+sub frame_1_3_5
+  5 servo
+  3 servo
+  1 servo
+  delay
+  return
+
+sub frame_3
+  3 servo
+  delay
+  return
+</Script>
+</UscSettings>

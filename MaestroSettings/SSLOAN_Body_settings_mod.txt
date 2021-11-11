@@ -1,0 +1,153 @@
+<!--Pololu Maestro servo controller settings file, http://www.pololu.com/catalog/product/1350-->
+<UscSettings version="1">
+  <NeverSuspend>false</NeverSuspend>
+  <SerialMode>UART_FIXED_BAUD_RATE</SerialMode>
+  <FixedBaudRate>9600</FixedBaudRate>
+  <SerialTimeout>0</SerialTimeout>
+  <EnableCrc>false</EnableCrc>
+  <SerialDeviceNumber>12</SerialDeviceNumber>
+  <SerialMiniSscOffset>0</SerialMiniSscOffset>
+  <Channels MiniMaestroServoPeriod="80000" ServoMultiplier="1">
+    <!--Period = 20 ms-->
+    <!--Channel 0-->
+    <Channel name="Left Door" mode="Servo" min="3712" max="7232" homemode="Off" home="3712" speed="0" acceleration="25" neutral="4160" range="1905" />
+    <!--Channel 1-->
+    <Channel name="Right Door" mode="Servo" min="4672" max="8192" homemode="Off" home="8192" speed="0" acceleration="25" neutral="6000" range="1905" />
+    <!--Channel 2-->
+    <Channel name="Arm" mode="Servo" min="3200" max="8000" homemode="Off" home="3200" speed="100" acceleration="30" neutral="6000" range="1905" />
+    <!--Channel 3-->
+    <Channel name="" mode="Servo" min="3968" max="8000" homemode="Off" home="3968" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 4-->
+    <Channel name="" mode="Servo" min="3968" max="8000" homemode="Off" home="3968" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 5-->
+    <Channel name="" mode="Servo" min="256" max="16320" homemode="Off" home="256" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 6-->
+    <Channel name="" mode="Servo" min="3968" max="8000" homemode="Off" home="3968" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 7-->
+    <Channel name="" mode="Servo" min="3968" max="8000" homemode="Off" home="3968" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 8-->
+    <Channel name="" mode="Servo" min="3968" max="8000" homemode="Off" home="3968" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 9-->
+    <Channel name="" mode="Servo" min="3968" max="8000" homemode="Off" home="3968" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 10-->
+    <Channel name="" mode="Servo" min="3968" max="8000" homemode="Off" home="3968" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 11-->
+    <Channel name="" mode="Servo" min="3968" max="8000" homemode="Off" home="3968" speed="0" acceleration="0" neutral="6000" range="1905" />
+  </Channels>
+  <Sequences>
+    <Sequence name="Openall">
+      <Frame name="Frame 0" duration="500">3712 8192 3200 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Frame 1" duration="1000">7232 4672 8000 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Frame 2" duration="1000">3712 8192 3200 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Frame 3" duration="100">0 0 0 0 0 0 0 0 0 0 0 0</Frame>
+    </Sequence>
+    <Sequence name="OpenArm">
+      <Frame name="Frame 0" duration="2000">3172 8192 8000 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Frame 1" duration="1000">3172 8192 3200 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Frame 2" duration="100">0 0 0 0 0 0 0 0 0 0 0 0</Frame>
+    </Sequence>
+    <Sequence name="OpenDoors">
+      <Frame name="Frame 0" duration="500">7232 4672 3200 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Frame 1" duration="1000">3712 8192 3200 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Frame 2" duration="100">0 0 0 0 0 0 0 0 0 0 0 0</Frame>
+    </Sequence>
+    <Sequence name="Wave">
+      <Frame name="Frame 0" duration="500">3712 4672 3200 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Frame 1" duration="500">3712 4672 8000 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Frame 2" duration="500">7168 4672 8000 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Frame 3" duration="500">7168 8192 8000 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Frame 4" duration="500">7168 8192 3200 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Frame 5" duration="600">3712 8192 3200 0 0 0 0 0 0 0 0 0</Frame>
+      <Frame name="Frame 6" duration="100">0 0 0 0 0 0 0 0 0 0 0 0</Frame>
+    </Sequence>
+  </Sequences>
+  <Script ScriptDone="true">
+### Sequence subroutines: ###
+
+# Openall
+sub Openall
+  0 3712 8192 3200 0 0 0 0 0 0 0 0 0 frame_0..11 # Frame 0
+  1000 7232 4672 8000 frame_0..2 # Frame 1
+  1000 3712 8192 3200 frame_0..2 # Frame 2
+  10 0 0 0 frame_0..2 # Frame 3
+  return
+# OpenArm
+sub OpenArm
+  1000 3172 8192 8000 0 0 0 0 0 0 0 0 0 frame_0..11 # Frame 0
+  1000 3200 frame_2 # Frame 1
+  10 0 0 0 frame_0..2 # Frame 2
+  return
+# OpenDoors
+sub OpenDoors
+  500 7232 4672 3200 0 0 0 0 0 0 0 0 0 frame_0..11 # Frame 0
+  1000 3712 8192 frame_0_1 # Frame 1
+  10 0 0 0 frame_0..2 # Frame 2
+  return
+# Wave
+sub Wave
+  200 3712 4672 3200 0 0 0 0 0 0 0 0 0 frame_0..11 # Frame 0
+  500 8000 frame_2 # Frame 1
+  500 7168 frame_0 # Frame 2
+  500 8192 frame_1 # Frame 3
+  500 3200 frame_2 # Frame 4
+  600 3712 frame_0 # Frame 5
+  10 0 0 0 frame_0..2 # Frame 6
+  return
+
+sub frame_0..11
+  11 servo
+  10 servo
+  9 servo
+  8 servo
+  7 servo
+  6 servo
+  5 servo
+  4 servo
+  3 servo
+  2 servo
+  1 servo
+  0 servo
+  delay
+  return
+
+sub frame_0..2
+  2 servo
+  1 servo
+  0 servo
+  delay
+  return
+
+sub frame_2
+  2 servo
+  delay
+  return
+
+sub frame_0_1
+  1 servo
+  0 servo
+  delay
+  return
+
+sub frame_1_2
+  2 servo
+  1 servo
+  delay
+  return
+
+sub frame_0_2
+  2 servo
+  0 servo
+  delay
+  return
+
+sub frame_1
+  1 servo
+  delay
+  return
+
+sub frame_0
+  0 servo
+  delay
+  return
+</Script>
+</UscSettings>
