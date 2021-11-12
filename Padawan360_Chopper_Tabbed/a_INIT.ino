@@ -66,7 +66,7 @@ const int DOMEBAUDRATE = 9600;
 
 #include <Sabertooth.h>
 #include <MP3Trigger.h>
-#include <XBOXRECV.h>
+#include <XBOXRECV.h>  // needs to be the Chatpad fork https://github.com/willtoth/USB_Host_Shield_2.0
 
 #include <Servos.h>
 #include <PololuMaestro.h> // added the Maestro libray
