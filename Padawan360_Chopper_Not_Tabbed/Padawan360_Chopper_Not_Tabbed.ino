@@ -228,7 +228,7 @@ USB Usb;
 XBOXRECV Xbox(&Usb);
 
 /***************** Cytron10 Configuration  *********************/
-//#define Cytron10 //Uncomment if using a Cytron10 motor controller for the dome
+#define Cytron10 //Uncomment if using a Cytron10 motor controller for the dome
 CytronMD motor(PWM_DIR, 3, 4);              // PWM = Pin 3, DIR = Pin 4.
 //boolean Dome_Direction = false;             // Used for automation
 int Dome_Direction = 100;             // Used for automation
